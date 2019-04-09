@@ -13,7 +13,7 @@ pipeline {
     }
     stages {
 
-				stage('create') {
+/*				stage('create') {
 					steps {
 						script {
 								openshift.withCluster("TEST-CLUSTER") {
@@ -25,7 +25,7 @@ pipeline {
 								}
 						}
 					}
-				}
+				}*/
         stage('Build Image') {
             steps {
                 script {
