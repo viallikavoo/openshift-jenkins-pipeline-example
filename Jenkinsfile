@@ -16,7 +16,7 @@ pipeline {
 				stage('create') {
 					steps {
 						script {
-								openshift.withCluster("TEST-CLUSTER") {
+								openshift.withCluster("TEST-CLUSTER","TEST-CLUSTER-TOKEN") {
                   sh """chmod -R 7777 openshift
                   cat openshift/templates/serviceConfig.yaml """
                       def temp = openshift.process("-f",SERVICE_TEMPLATE_PATH,"--param-file=${SERVICE_PARAMETERS_PATH}")
