@@ -29,12 +29,12 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    openshift.withCluster() {
-                        openshift.withProject("TEST-CLUSTER") {
+                    openshift.withCluster("TEST-CLUSTER") {
+                      //  openshift.withProject("") {
                             def temp = openshift.process("-f",BUILD_TEMPLATE_PATH,"--param-file=${BUILD_PARAMETERS_PATH}")
                             openshift.apply(temp)
                             openshift.selector("bc", "$APPLICATION_NAME").startBuild("--from-dir=.", "--wait=true", "--follow")
-                        }
+                        //}
                     }
                 }
             }
