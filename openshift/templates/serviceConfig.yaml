@@ -127,7 +127,7 @@ parameters:
     name: ENVIRONMENT
     required: true
   -
-    description: "Full service name\""
+    description: "Full service name"
     displayName: "Full service name"
     name: SERVICE_NAME
     required: true
