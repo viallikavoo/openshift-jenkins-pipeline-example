@@ -1,13 +1,13 @@
 ---
-apiVersion: "template.openshift.io/v1"
-kind: "Templates"
+apiVersion: template.openshift.io/v1
+kind: Template
 labels:
-  template: ${SERVICE_NAME}.yaml
+  template: test
 metadata:
-  name: ${SERVICE_NAME}
+  name: test
   annotations:
     description: The primary service template for deployments
-    tags: ${SERVICE_NAME}
+    tags: test
 objects:
   -
     apiVersion: v1
