@@ -19,6 +19,7 @@ pipeline {
 								openshift.withCluster("TEST-CLUSTER") {
                   sh """ls -la"""
                       def temp = openshift.process("-f",SERVICE_TEMPLATE_PATH,"--param-file=${SERVICE_PARAMETERS_PATH}")
+                      println temp
                       openshift.apply(temp)
 								}
 						}
