@@ -19,12 +19,9 @@ pipeline {
 								openshift.withCluster("TEST-CLUSTER") {
                   sh """chmod -R 7777 openshift
                   cat openshift/templates/serviceConfig.yaml """
-                  def template = openshift.create(readFile(SERVICE_TEMPLATE_PATH)).object()
-                      def temp = openshift.process(APPLICATION_NAME,"-f")
-										  openshift.apply(temp)
-                      /*def temp = openshift.process("-f",SERVICE_TEMPLATE_PATH,"--param-file=${SERVICE_PARAMETERS_PATH}")
+                      def temp = openshift.process("-f",SERVICE_TEMPLATE_PATH,"--param-file=${SERVICE_PARAMETERS_PATH}")
                       println temp
-                      openshift.apply(temp)*/
+                      openshift.apply(temp)
 								}
 						}
 					}
