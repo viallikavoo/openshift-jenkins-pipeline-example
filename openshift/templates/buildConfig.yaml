@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: ${SERVICE_NAME}-BC.yaml
+metadata:
+  name: ${SERVICE_NAME}
+  annotations:
+    description: The primary service template for deployments
+    tags: ${SERVICE_NAME}
+
+objects:
+
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: "${SERVICE_NAME}"
+  spec:
+    source:
+      type: Binary
+      binary: {}
+    strategy:
+      type: Docker
+      dockerStrategy:
+        dockerfilePath: Dockerfile
+        noCache: true
+        forcePull: true
+    output:
+      to:
+        kind: DockerImage
+        name: "docker-registry.default.svc:5000/${SERVICE_NAME}-${ENVIRONMENT}:latest"
+    runPolicy: Serial
+    nodeSelector: null
+    postCommit: {}
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 256Mi
+    triggers:
+      - type: ConfigChange
+
+
+parameters:
+
+  # params-common.json
+  - name: SERVICE_NAME
+    description: Full service name."
+    displayName: Full service name
+    required: true
+
+  - name: ENVIRONMENT
+    description: ENV name as dev,test,prod
+    displayName: ENVIRONMENT
+    required: true
