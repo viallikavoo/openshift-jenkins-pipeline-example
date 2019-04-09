@@ -1,7 +1,13 @@
 ---
 apiVersion: "v1"
 kind: "Template"
-
+labels:
+  template: ${SERVICE_NAME}.yaml
+metadata:
+  name: ${SERVICE_NAME}
+  annotations:
+    description: The primary service template for deployments
+    tags: ${SERVICE_NAME}
 objects:
   -
     apiVersion: v1
