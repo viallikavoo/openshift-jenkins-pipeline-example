@@ -1,13 +1,7 @@
 ---
-apiVersion: v1
-kind: Template
-labels:
-  template: serviceConfig.yaml
-metadata:
-  annotations:
-    description: "The primary BuildConfig template for Jenkins to Build Images"
-    tags: "${SERVICE_NAME}"
-  name: "${SERVICE_NAME}"
+apiVersion: "v1"
+kind: "Template"
+
 objects:
   -
     apiVersion: v1
