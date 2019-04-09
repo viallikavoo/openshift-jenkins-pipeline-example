@@ -1,6 +1,6 @@
 ---
 apiVersion: "template.openshift.io/v1"
-kind: "Template"
+kind: "Templates"
 labels:
   template: ${SERVICE_NAME}.yaml
 metadata:
