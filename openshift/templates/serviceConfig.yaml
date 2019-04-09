@@ -65,8 +65,6 @@ objects:
       spec:
         serviceAccountName: "${SERVICE_NAME}"
         dnsPolicy: ClusterFirst
-        imagePullSecrets:
-          - name: registry-${SPI}-image-puller
         restartPolicy: Always
         terminationGracePeriodSeconds: 30
         containers:
